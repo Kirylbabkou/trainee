@@ -1,9 +1,16 @@
 import { Formik } from "formik";
 
-// import { useRootStore } from "../../stores";
-import { Layout, Input, Button } from "antd";
+// import { useRootStore } from "stores";
+import {
+  Layout,
+  // Input,
+  // Button,
+  Checkbox,
+} from "antd";
+import Link from "antd/es/typography/Link";
 
-// import { Input } from "../../components/shared/ui/input";
+import { Input } from "../../components/shared/ui/input";
+import { Button } from "shared/ui";
 // import { emailValidation, passwordValidation } from "shared/validations";
 
 // import s from "./Styles.module.scss";
@@ -18,34 +25,14 @@ function SignIn() {
 
   return (
     <div>
-      <Layout
-
-      // maxWidth="lg"
-      // sx={{
-      //   height: "100vh",
-      //   display: "flex",
-      //   alignItems: "center",
-      //   flexDirection: "column",
-      //   gap: 15,
-      // }}
-      >
-        {/* <img src={logo} className={s.logo} alt="Logo" /> */}
-
+      <Layout>
         <div>
-          <div
-          // elevation={16}
-          // sx={{
-          //   display: "flex",
-          //   flexDirection: "column",
-          //   minWidth: 550,
-          //   p: 3,
-          // }}
-          >
+          <div>
             <div mb={3}>
-              <p variant="h5">signIn</p>
-              <p color="text.secondary" variant="body2">
-                dontHaveAccount
-                <button color="primary">register</button>
+              <p>Войти</p>
+              <p>
+                Еще нет аккаунта на Craftshare?
+                <Link color="primary">Зарегистрироваться</Link>
               </p>
             </div>
             <Formik
@@ -59,18 +46,21 @@ function SignIn() {
               }}
             >
               {({ handleSubmit }) => (
-                <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+                <form onSubmit={handleSubmit} style={{ width: "50%" }}>
                   <div justifyContent="center" spacing={2}>
-                    <Input name="email" />
-                    <Input name="password" type="password" />
+                    <Input name="email" type="email" placeholder="email" />
+                    <Input
+                      name="password"
+                      type="password"
+                      placeholder="пароль"
+                    />
                     <Button type="submit">Войти</Button>
                   </div>
                 </form>
               )}
             </Formik>
-            <button color="primary" sx={{ mt: 1 }}>
-              forgotPassword
-            </button>
+            <Button btnText="Забыл пароль?"></Button>
+            <Checkbox>Запомнить меня</Checkbox>
           </div>
 
           {/* <alert severity="error" sx={{ mt: 2.5 }}>
